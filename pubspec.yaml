@@ -1,0 +1,7 @@
+name: dart_server
+description: Простой HTTP-сервер на Dart.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.0.0

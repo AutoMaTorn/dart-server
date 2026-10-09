@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DART_VERSION: stable
+        ALPINE_VERSION: "3.22"
+    image: dart-server:latest
+    container_name: dart-server
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+    ports:
+      - "${HOST_PORT:-8080}:${PORT:-8080}"
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped

@@ -1,0 +1,10 @@
+.dart_tool/
+.packages
+build/
+bin/server
+bin/server.exe
+.env
+.git/
+Dockerfile
+docker-compose.yml
+*.md
