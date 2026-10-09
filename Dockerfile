@@ -3,9 +3,7 @@
 ARG DART_VERSION=stable
 ARG ALPINE_VERSION=3.22
 
-# ============================================================
 # Этап 1: сборка. Компилируем Dart-код в нативный исполняемый файл.
-# ============================================================
 FROM dart:${DART_VERSION} AS build
 
 WORKDIR /app
@@ -23,9 +21,8 @@ RUN --mount=type=cache,target=/root/.pub-cache \
     dart pub get --offline \
  && dart compile exe bin/server.dart -o /app/server
 
-# ============================================================
+
 # Этап 2: запуск. Лёгкий образ alpine, в который копируется только артефакт.
-# ============================================================
 FROM alpine:${ALPINE_VERSION}
 
 # Dart AOT-бинарник собран под glibc, а в alpine используется musl:
